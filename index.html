@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoGP Live</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand-group">
+                <div class="brand-mark">MotoGP Live</div>
+                <div class="brand-copy">
+                    <p class="brand-subtitle">Official race dashboard style</p>
+                </div>
+            </div>
+            <nav class="site-nav">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#schedule" class="nav-link">Schedule</a>
+                <a href="#standings" class="nav-link">Standings</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app-shell">
+        <section class="hero-panel" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">NEXT RACE COUNTDOWN</p>
+                <h1 class="hero-title">Race weekend is live</h1>
+                <p class="hero-copy">Track the next Grand Prix with a premium MotoGP-inspired interface. Every circuit card is interactive and opens a full race detail panel.</p>
+                <div class="hero-card">
+                    <div class="hero-card-head">
+                        <span class="hero-label">Next race</span>
+                        <span class="live-chip">LIVE</span>
+                    </div>
+                    <div class="hero-race-name" id="heroRaceName">Loading next race...</div>
+                    <div class="hero-race-meta" id="heroRaceMeta">Country • Circuit</div>
+                    <div class="hero-countdown" id="heroCountdown">00:00:00</div>
+                    <div class="hero-details" id="heroDetails">UTC and local timing updates in real time.</div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-glow"></div>
+                <div class="hero-stats">
+                    <div class="stat-block">
+                        <span class="stat-value" id="nextRaceDate">--</span>
+                        <span class="stat-label">Race Date</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-value" id="nextRaceTime">--</span>
+                        <span class="stat-label">UTC start</span>
+                    </div>
+                    <div class="stat-block">
+                        <span class="stat-value">22</span>
+                        <span class="stat-label">Races loaded</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block" id="schedule">
+            <div class="section-header">
+                <div>
+                    <p class="section-label">Race Schedule</p>
+                    <h2 class="section-title">Interactive circuit cards</h2>
+                </div>
+                <p class="section-note">Click any circuit for full race details, UTC and converted local times, plus a dynamic countdown.</p>
+            </div>
+            <div class="schedule-grid" id="scheduleGrid"></div>
+        </section>
+
+        <section class="section-block" id="standings">
+            <div class="section-header">
+                <div>
+                    <p class="section-label">World Championship</p>
+                    <h2 class="section-title">2026 rider standings</h2>
+                </div>
+                <p class="section-note">Current 2026 MotoGP standings with rider names, teams, and championship points.</p>
+            </div>
+            <div class="standings-table" id="standingsTable"></div>
+        </section>
+
+        <section class="section-block" id="timezones">
+            <div class="section-header">
+                <div>
+                    <p class="section-label">Timezone Converter</p>
+                    <h2 class="section-title">Race times across every region</h2>
+                </div>
+                <p class="section-note">All race times are converted from UTC into standard regional zones using Intl.DateTimeFormat.</p>
+            </div>
+            <div class="timezone-grid" id="timezoneGrid"></div>
+        </section>
+    </main>
+
+    <div class="overlay hidden" id="overlay"></div>
+    <aside class="detail-panel hidden" id="detailPanel">
+        <div class="panel-header">
+            <div>
+                <p class="panel-label" id="detailCircuit">Circuit</p>
+                <h2 class="panel-title" id="detailRaceName">Race Name</h2>
+                <p class="panel-country" id="detailCountry">Country</p>
+            </div>
+            <button class="panel-close" id="closeButton" aria-label="Close details">×</button>
+        </div>
+        <div class="panel-body">
+            <div class="panel-info" id="detailInfo">Race description goes here.</div>
+            <div class="panel-meta">
+                <div class="meta-block">
+                    <span>UTC start</span>
+                    <strong id="detailUtc">--</strong>
+                </div>
+                <div class="meta-block">
+                    <span>Local time</span>
+                    <strong id="detailLocal">--</strong>
+                </div>
+                <div class="meta-block">
+                    <span>Countdown</span>
+                    <strong id="detailCountdown">--</strong>
+                </div>
+            </div>
+            <div class="panel-timer-glow"></div>
+        </div>
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+</html>
